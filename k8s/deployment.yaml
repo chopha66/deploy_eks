@@ -34,12 +34,12 @@ spec:
         - name: DB_HOST
           valueFrom:
             secretKeyRef:
-              name: my-app-secrets
+              name: ordersystem-secret
               key: DB_HOST
         - name: DB_PW
           valueFrom:
             secretKeyRef:
-              name: my-app-secrets
+              name: ordersystem-secret
               key: DB_PW
         # 컨테이너 상태 확인을 통해 롤링업데이트 최적화 
         readinessProbe:

@@ -1,0 +1,15 @@
+apiVersion: karpenter.k8s.aws/v1
+kind: EC2NodeClass
+metadata:
+  name: ordersystem-node-class
+spec:
+  amiFamily: AL2023 # 혹은 AL2, Ubuntu 등 지정
+  role: KarpenterNodeRole-eks-cluster # NodeRole 이름
+  amiSelectorTerms:
+    - alias: al2023@latest # EKS 버전에 맞는 최신 AL2023 이미지를 자동 선택
+  subnetSelectorTerms:
+    - tags:
+        karpenter.sh/discovery: eks-cluster
+  securityGroupSelectorTerms:
+    - tags:
+        karpenter.sh/discovery: eks-cluster

@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server
+  namespace: argocd
+  annotations:
+    cert-manager.io/cluster-issuer: my-issuer
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+      - argocd.bagpacker4608.shop
+    secretName: argocd-bagpacker4608-com-tls
+  rules:
+  - host: argocd.bagpacker4608.shop
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: argocd-server
+              port:
+                number: 80

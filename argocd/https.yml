@@ -1,0 +1,16 @@
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: argocd-bagpacker4608-com-tls
+  namespace: argocd
+spec:
+  secretName: argocd-bagpacker4608-com-tls
+  duration: 2160h #90day
+  renewBefore: 360h #before 15day
+  issuerRef:
+    name: my-issuer
+    kind: ClusterIssuer
+  commonName: argocd.bagpacker4608.shop
+  dnsNames:
+  - argocd.bagpacker4608.shop

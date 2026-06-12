@@ -23,6 +23,8 @@ spec:
           # 아래 volumnMount를 통해 저장된 prometheus.yml 파일을 read
           # 이 파일을 기반으로 node-exporter에서 시스템 정보를 수집
             - "--config.file=/etc/prometheus/prometheus.yml"
+            - "--web.external-url=https://monitoring.bagpacker4608.shop/prometheus/"
+            - "--web.route-prefix=/prometheus"
           ports:
             - containerPort: 9090
           resources:

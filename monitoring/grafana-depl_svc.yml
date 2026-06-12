@@ -16,6 +16,13 @@ spec:
       containers:
         - name: grafana
           image: grafana/grafana
+          env:
+            # 1. 외부에서 접속하는 전체 URL 주소를 명시 (서브패스 포함)
+            - name: GF_SERVER_ROOT_URL
+              value: https://monitoring.bagpacker4608.shop/grafana/
+            # 2. Ingress에서 들어오는 서브패스를 그라파나가 인지하도록 허용
+            - name: GF_SERVER_SERVE_FROM_SUB_PATH
+              value: "true"
           ports:
             - containerPort: 3000
           resources:

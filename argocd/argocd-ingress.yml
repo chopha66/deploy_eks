@@ -4,13 +4,13 @@ metadata:
   name: argocd-server
   namespace: argocd
   annotations:
-    cert-manager.io/cluster-issuer: my-issuer
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-northeast-2:564290535730:certificate/1d84360a-8ea3-4fc1-adab-c60f21630c80
 spec:
-  ingressClassName: nginx
-  tls:
-  - hosts:
-      - argocd.bagpacker4608.shop
-    secretName: argocd-bagpacker4608-com-tls
+  ingressClassName: alb
   rules:
   - host: argocd.bagpacker4608.shop
     http:

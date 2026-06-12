@@ -13,3 +13,4 @@ spec:
   securityGroupSelectorTerms:
     - tags:
         karpenter.sh/discovery: eks-cluster
+  associatePublicIPAddress: true

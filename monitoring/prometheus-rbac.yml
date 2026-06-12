@@ -8,10 +8,14 @@ rules:
 # apiGroups가 "" 인경우 core그룹(pods, serivce, nodes 등)
 # apps그룹은 depl, svc 등
   - apiGroups: [""]
-  # 노드에 대한 권한
+    # 노드에 대한 권한
     resources: ["nodes", "nodes/metrics"]
-  # 조회권한 : kubectl get node, kubectl get nodes, kubectl get node --watch
+    # 조회권한 : kubectl get node, kubectl get nodes, kubectl get node --watch
     verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    # Pod에 대한 권한
+    resources: [ "pods", "pods/proxy", "services", "endpoints" ]
+    verbs: [ "get", "list", "watch" ]
 ---
 # 2. ServiceAccount : Pod를 위한 계정
 apiVersion: v1

@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: argocd-server
+  name: ordersystem
   namespace: argocd
 spec:
   project: default

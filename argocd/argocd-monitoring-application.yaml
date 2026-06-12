@@ -11,7 +11,7 @@ spec:
     path: monitoring
   destination:
     server: https://kubernetes.default.svc
-    namespace: prod
+    namespace: monitoring
   syncPolicy:
   # Argo CD가 사람이 명령 안 해도 자동으로 GitHub에 있는 매니페스트를 클러스터에 적용
     automated:

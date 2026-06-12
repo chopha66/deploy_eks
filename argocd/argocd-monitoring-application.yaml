@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/chopha66/deploy_eks.git
+    targetRevision: main
+    path: monitoring
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+  syncPolicy:
+  # Argo CD가 사람이 명령 안 해도 자동으로 GitHub에 있는 매니페스트를 클러스터에 적용
+    automated:
+    # GitHub에서 삭제된 리소스는 클러스터에서도 자동 삭제
+      prune: true
+      # 클러스터 안에서 수동으로 리소스가 변경되면, GitHub에 있는 원래 상태로 자동 복구
+      selfHeal: true

@@ -4,7 +4,7 @@
 
 AWS EKS 기반 Spring 애플리케이션의 클라우드 네이티브 배포 파이프라인을 구축합니다.
 
-![아키텍처 다이어그램](/deploy_eks.jpg)
+![아키텍처 다이어그램](/docs/images/deploy_eks.jpg)
 - **프로젝트명**: deploy_eks
 - **목표 클라우드**: AWS EKS
 
